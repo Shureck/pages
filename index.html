@@ -24,6 +24,8 @@
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  /* переход по меню останавливает блок под липкой шапкой (68 px), а не под ней */
+  section[id], [id="top"] { scroll-margin-top: 84px; }
   html, body { overflow-x: clip; }
   body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 Manrope, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   img, video { display: block; max-width: 100%; }
