@@ -87,8 +87,6 @@
   .product { cursor: pointer; background: none; border: 0; padding: 0; text-align: left; display: flex; flex-direction: column; height: 100%; }
   .pimg { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: var(--soft-bg); }
   .pimg img { width: 100%; height: 100%; object-fit: cover; }
-  .pimg .badge { position: absolute; left: 8px; top: 8px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
-  .pimg .badge.real { background: var(--accent); color: #fff; }
   .pimg .segs { position: absolute; left: 8px; right: 8px; bottom: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
   .pimg .segs i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .55); }
   .pimg .segs i.on { background: #fff; }
@@ -386,13 +384,9 @@ document.getElementById("stack").innerHTML = WORKS.slice(0, 3)
 
 function card(w) {
   const i = WORKS.indexOf(w), sl = imgs(w).slice(0, 6);
-  const badge = w.brand === "Заказ клиента"
-    ? '<span class="badge real">Реальный заказ</span>'
-    : `<span class="badge">${w.slides} ${plural(w.slides, "слайд", "слайда", "слайдов")}</span>`;
   return `<button class="product" data-i="${i}">
     <div class="pimg" data-srcs="${esc(JSON.stringify(sl.map(m => m.src)))}">
       <img src="${(sl[0] || {src: w.cover}).src}" alt="${esc(w.title)}" loading="lazy">
-      ${badge}
       <div class="segs">${sl.map((_, k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</div>
     </div>
     <div class="pprice"><b>${PRICE} ₽</b><span>/ слайд</span></div>
