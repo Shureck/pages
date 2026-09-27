@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Инфографика для Wildberries и Ozon — Александр</title>
-<meta name="description" content="Дизайн карточек товара для маркетплейсов: главный слайд в нескольких вариантах, инфографика, схемы, 3D-рендер товара и исходники в Figma.">
-<meta property="og:title" content="Инфографика для карточек Wildberries и Ozon">
+<meta name="description" content="Дизайн карточек товара для маркетплейсов: главный слайд в нескольких вариантах, инфографика, схемы и исходники в Figma. 200 ₽ за слайд.">
+<meta property="og:title" content="Инфографика для карточек Wildberries и Ozon — 200 ₽ за слайд">
 <meta property="og:description" content="Карточки, которые читаются с телефона и продают. Исходники в Figma.">
 <meta property="og:image" content="https://shureck.github.io/pages/assets/og.jpg">
 <meta property="og:type" content="website">
@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f1ec; --card: #ffffff; --ink: #141414; --muted: #6d675f; --line: #e3ddd4;
-    --accent: #ff5b2e; --accent-ink: #ffffff; --soft: #fbe3da; --dark: #151515;
+    --bg: #f4f1ec; --card: #ffffff; --ink: #141414; --muted: #6d675f; --line: #e3ddd4; --soft-bg: #f2f2f5;
+    --accent: #ff5b2e; --accent-dark: #e8491d; --soft: #fbe3da; --dark: #151515; --grey: #8b8b99;
     --radius: 22px; --shadow: 0 18px 50px -24px rgba(20, 20, 20, .35);
   }
   * { box-sizing: border-box; }
@@ -24,19 +24,20 @@
   body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.55 Manrope, "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   img, video { display: block; max-width: 100%; }
   a { color: inherit; }
-  .wrap { width: min(1180px, 100% - 32px); margin: 0 auto; }
+  button { font: inherit; color: inherit; }
+  .wrap { width: min(1240px, 100% - 32px); margin: 0 auto; }
   h1, h2, h3 { font-family: Unbounded, Manrope, sans-serif; font-weight: 700; letter-spacing: -.02em; margin: 0; }
   h2 { font-size: clamp(28px, 4vw, 44px); line-height: 1.1; }
   .eyebrow { display: inline-block; font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .15s, box-shadow .15s, background .15s; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 26px; border-radius: 999px; font-weight: 700; text-decoration: none; border: 0; cursor: pointer; transition: transform .15s, box-shadow .15s, background .15s; }
   .btn:hover { transform: translateY(-2px); }
-  .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 12px 30px -12px var(--accent); }
-  .btn-ghost { border: 1.5px solid var(--ink); }
+  .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 12px 30px -12px var(--accent); }
+  .btn-ghost { border: 1.5px solid var(--ink); background: transparent; }
   .btn-ghost:hover { background: var(--ink); color: var(--bg); }
 
-  /* шапка */
   header { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .2s; }
   header.scrolled { border-color: var(--line); }
+  body.view-open header { visibility: hidden; }
   .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
   .logo { font-family: Unbounded, sans-serif; font-weight: 700; font-size: 18px; text-decoration: none; }
   .logo span { color: var(--accent); }
@@ -49,10 +50,11 @@
   .hero { padding: 56px 0 40px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; }
   .hero h1 { font-size: clamp(30px, 4.1vw, 52px); line-height: 1.06; }
   .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero p.lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 540px; margin: 22px 0 32px; }
+  .hero p.lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); max-width: 560px; margin: 22px 0 32px; }
   .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
   .facts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 34px; }
   .fact { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-size: 14px; font-weight: 600; }
+  .fact b { color: var(--accent); }
   .stack { position: relative; height: 520px; }
   .stack img { position: absolute; width: 58%; border-radius: 18px; box-shadow: var(--shadow); aspect-ratio: 3 / 4; object-fit: cover; background: #ddd; transition: transform .4s; }
   .stack img:nth-child(1) { left: 0; top: 60px; transform: rotate(-8deg); }
@@ -61,23 +63,37 @@
   .stack:hover img:nth-child(1) { transform: rotate(-11deg) translateX(-12px); }
   .stack:hover img:nth-child(3) { transform: rotate(11deg) translateX(12px); }
 
-  body.modal-open header { visibility: hidden; }
   section { padding: 72px 0; }
-  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 36px; flex-wrap: wrap; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 28px; flex-wrap: wrap; }
   .section-head p { color: var(--muted); max-width: 440px; margin: 0; }
 
-  /* работы */
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 26px; }
-  .work { background: var(--card); border-radius: var(--radius); overflow: hidden; cursor: pointer; border: 1px solid var(--line); transition: transform .2s, box-shadow .2s; text-align: left; padding: 0; font: inherit; color: inherit; }
-  .work:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-  .work .thumb { aspect-ratio: 3 / 2; overflow: hidden; background: #e9e4dc; }
-  .work .thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
-  .work:hover .thumb img { transform: scale(1.04); }
-  .work .body { padding: 20px 22px 24px; }
-  .work h3 { font-size: 19px; line-height: 1.25; }
-  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .tag { font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: var(--bg); color: var(--muted); }
-  .work .more { margin-top: 16px; font-weight: 700; font-size: 14px; color: var(--accent); }
+  /* каталог как на маркетплейсе */
+  .catalog { background: #fff; border-radius: 28px; padding: clamp(18px, 3vw, 32px); }
+  .catalog-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .catalog-top h2 { font-size: clamp(24px, 3vw, 34px); }
+  .catalog-top .count { color: var(--grey); font-weight: 600; }
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0 24px; }
+  .chip { border: 0; background: var(--soft-bg); padding: 9px 16px; border-radius: 12px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .15s, color .15s; }
+  .chip:hover { background: #e7e7ec; }
+  .chip.on { background: var(--ink); color: #fff; }
+  .products { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 28px 16px; }
+  .product { cursor: pointer; background: none; border: 0; padding: 0; text-align: left; display: flex; flex-direction: column; }
+  .pimg { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: var(--soft-bg); }
+  .pimg img { width: 100%; height: 100%; object-fit: cover; }
+  .pimg .badge { position: absolute; left: 8px; top: 8px; background: #fff; color: var(--ink); font-size: 12px; font-weight: 800; padding: 4px 9px; border-radius: 8px; }
+  .pimg .badge.real { background: var(--accent); color: #fff; }
+  .pimg .segs { position: absolute; left: 8px; right: 8px; bottom: 8px; display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+  .pimg .segs i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .55); }
+  .pimg .segs i.on { background: #fff; }
+  .product:hover .segs, .product:focus-visible .segs { opacity: 1; }
+  .pprice { margin-top: 10px; display: flex; align-items: baseline; gap: 6px; }
+  .pprice b { font-size: 20px; font-weight: 800; color: var(--accent); }
+  .pprice span { color: var(--grey); font-size: 13px; font-weight: 600; }
+  .pname { margin-top: 4px; font-size: 14px; line-height: 1.35; color: var(--grey); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pname strong { color: var(--ink); font-weight: 700; }
+  .pmeta { margin-top: 6px; font-size: 12.5px; color: var(--grey); }
+  .pbtn { margin-top: 12px; width: 100%; padding: 11px; border-radius: 12px; background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; text-align: center; transition: background .15s; }
+  .product:hover .pbtn { background: var(--accent-dark); }
 
   /* что входит */
   .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
@@ -86,64 +102,116 @@
   .feature h3 { font-size: 17px; margin: 14px 0 8px; line-height: 1.3; }
   .feature p { margin: 0; color: var(--muted); font-size: 15px; }
 
-  /* цены */
+  /* цена */
   .dark { background: var(--dark); color: #f3efe9; border-radius: 36px; }
   .dark .section-head p { color: #a9a39a; }
-  .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .price { border: 1px solid #2d2d2d; border-radius: var(--radius); padding: 30px 26px; background: #1c1c1c; }
-  .price.hot { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .price h3 { font-size: 17px; font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: 0; }
-  .price .sum { font-family: Unbounded, sans-serif; font-size: 34px; margin: 18px 0 6px; }
-  .price .note { color: #a9a39a; font-size: 14.5px; }
-  .price.hot .note { color: #ffe2d8; }
-  .price ul { margin: 18px 0 0; padding-left: 18px; font-size: 15px; }
-  .price li { margin: 6px 0; }
-  .terms { margin-top: 26px; color: #a9a39a; font-size: 15px; }
+  .price-box { display: grid; grid-template-columns: .9fr 1.1fr; gap: 20px; }
+  .price-main { background: var(--accent); border-radius: var(--radius); padding: 34px 30px; color: #fff; display: flex; flex-direction: column; justify-content: space-between; min-height: 260px; }
+  .price-main .sum { font-family: Unbounded, sans-serif; font-size: clamp(54px, 7vw, 84px); line-height: 1; }
+  .price-main .per { font-size: 20px; font-weight: 700; margin-top: 8px; }
+  .price-main .ex { color: #ffe2d8; font-size: 15px; margin-top: 24px; }
+  .price-list { border: 1px solid #2d2d2d; background: #1c1c1c; border-radius: var(--radius); padding: 30px; }
+  .price-list h3 { font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: 0; font-size: 18px; }
+  .price-list ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .price-list li { display: flex; gap: 12px; font-size: 15.5px; }
+  .price-list li::before { content: "✓"; color: var(--accent); font-weight: 800; }
+  .terms { margin-top: 24px; color: #a9a39a; font-size: 15px; }
 
-  /* этапы */
   .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: s; }
   .step { position: relative; padding: 24px 20px; background: var(--card); border-radius: var(--radius); border: 1px solid var(--line); }
   .step::before { counter-increment: s; content: counter(s); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--soft); color: var(--accent); font-weight: 800; margin-bottom: 14px; }
   .step h3 { font-size: 15.5px; font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: 0; }
   .step p { margin: 6px 0 0; font-size: 14.5px; color: var(--muted); }
 
-  /* контакты */
   .contact { background: var(--accent); color: #fff; border-radius: 36px; padding: 64px clamp(24px, 6vw, 72px); display: grid; grid-template-columns: 1.2fr .8fr; gap: 32px; align-items: center; }
   .contact h2 { font-size: clamp(28px, 4vw, 46px); }
   .contact p { color: #ffe2d8; margin: 16px 0 0; }
   .contact .links { display: grid; gap: 12px; }
-  .contact .btn { background: #fff; color: var(--ink); justify-content: center; }
+  .contact .btn { background: #fff; color: var(--ink); }
   .contact .btn.alt { background: transparent; color: #fff; border: 1.5px solid #fff; }
   footer { padding: 34px 0 48px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
-  /* окно работы */
-  .modal { position: fixed; inset: 0; z-index: 1000; background: rgba(12, 12, 12, .72); backdrop-filter: blur(6px); display: none; overflow-y: auto; padding: 32px 16px; }
-  .modal.open { display: block; }
-  .sheet { width: min(1100px, 100%); margin: 0 auto; background: var(--bg); border-radius: 28px; padding: clamp(20px, 4vw, 44px); position: relative; }
-  .close { position: sticky; top: 0; float: right; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--ink); color: #fff; font-size: 22px; cursor: pointer; z-index: 2; }
-  .sheet h2 { font-size: clamp(24px, 3vw, 36px); max-width: 80%; }
-  .sheet .desc { color: var(--muted); max-width: 720px; margin: 14px 0 0; }
-  .gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 28px; }
-  .gallery figure { margin: 0; border-radius: 16px; overflow: hidden; background: #e9e4dc; }
-  .gallery figure.wide { grid-column: 1 / -1; }
-  .gallery img, .gallery video { width: 100%; height: auto; }
-  .sheet .cta { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  /* страница «товара» */
+  .view { position: fixed; inset: 0; z-index: 1000; background: #fff; overflow-y: auto; display: none; }
+  .view.open { display: block; }
+  .vbar { position: sticky; top: 0; z-index: 3; background: rgba(255, 255, 255, .94); backdrop-filter: blur(10px); border-bottom: 1px solid #ececf0; }
+  .vbar .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .crumbs { font-size: 14px; color: var(--grey); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .crumbs button { background: none; border: 0; padding: 0; color: var(--grey); cursor: pointer; }
+  .crumbs button:hover { color: var(--ink); }
+  .vclose { width: 42px; height: 42px; border-radius: 50%; border: 0; background: var(--soft-bg); font-size: 22px; cursor: pointer; flex: none; }
+  .vhead { padding: 22px 0 10px; }
+  .vhead .brand { color: var(--accent); font-weight: 700; font-size: 14px; }
+  .vhead h1 { font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: -.01em; font-size: clamp(22px, 2.6vw, 30px); margin-top: 4px; }
+  .vhead .sub { color: var(--grey); font-size: 14px; margin-top: 6px; }
+  .vgrid { display: grid; grid-template-columns: 76px minmax(0, 520px) minmax(0, 1fr) 320px; gap: 22px; padding: 12px 0 60px; align-items: start; }
+  .thumbs { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 76px; max-height: calc(100vh - 100px); overflow-y: auto; }
+  .thumb { width: 76px; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; border: 2px solid transparent; padding: 0; background: var(--soft-bg); cursor: pointer; position: relative; flex: none; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb.on { border-color: var(--accent); }
+  .thumb .play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: 18px; background: rgba(0, 0, 0, .25); }
+  .stage { position: sticky; top: 76px; }
+  .main { position: relative; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; background: var(--soft-bg); touch-action: pan-y; }
+  .main #v-media, .main img, .main video { width: 100%; height: 100%; }
+  .main img, .main video { object-fit: contain; }
+  .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255, 255, 255, .92); box-shadow: 0 4px 14px rgba(0, 0, 0, .15); font-size: 20px; cursor: pointer; opacity: 0; transition: opacity .15s; }
+  .main:hover .arrow { opacity: 1; }
+  .arrow.prev { left: 12px; } .arrow.next { right: 12px; }
+  .counter { position: absolute; right: 12px; bottom: 12px; background: rgba(20, 20, 20, .6); color: #fff; font-size: 12.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+  .spec h3, .about h3 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0; margin-bottom: 12px; }
+  .spec dl { margin: 0; display: grid; gap: 10px; }
+  .spec dl div { display: flex; align-items: baseline; gap: 8px; font-size: 14.5px; }
+  .spec dt { color: var(--grey); white-space: nowrap; }
+  .spec .dots { flex: 1; border-bottom: 1px dotted #cfcfd8; transform: translateY(-4px); }
+  .spec dd { margin: 0; font-weight: 600; text-align: right; }
+  .about { margin-top: 28px; }
+  .about p { margin: 0; font-size: 15px; line-height: 1.6; }
+  .about .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+  .tag { font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: var(--soft-bg); color: var(--muted); }
+  .buy { position: sticky; top: 76px; border-radius: 18px; padding: 22px; box-shadow: 0 6px 30px rgba(20, 20, 40, .12); background: #fff; }
+  .buy .big { font-size: 34px; font-weight: 800; color: var(--accent); line-height: 1; }
+  .buy .big small { font-size: 16px; color: var(--grey); font-weight: 600; }
+  .buy .calc { margin-top: 10px; font-size: 14.5px; color: var(--muted); }
+  .buy .calc b { color: var(--ink); }
+  .buy .btn { width: 100%; margin-top: 14px; border-radius: 14px; padding: 15px; }
+  .buy .btn.alt { background: var(--soft-bg); color: var(--ink); box-shadow: none; }
+  .buy .note { margin-top: 14px; font-size: 13px; color: var(--grey); line-height: 1.5; }
+  .more-row { border-top: 1px solid #ececf0; padding: 28px 0 60px; }
+  .more-row h3 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0; margin-bottom: 18px; }
+  .more-row .products { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
 
+  @media (max-width: 1100px) {
+    .vgrid { grid-template-columns: 76px minmax(0, 1fr) 300px; }
+    .vgrid .info { grid-column: 2 / -1; }
+  }
   @media (max-width: 960px) {
     .hero { grid-template-columns: 1fr; padding-top: 32px; }
     .stack { height: 380px; order: -1; }
-    .features, .prices { grid-template-columns: 1fr 1fr; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .price-box { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr 1fr; }
     .contact { grid-template-columns: 1fr; }
     .nav-links a:not(.btn) { display: none; }
   }
+  @media (max-width: 760px) {
+    .vgrid { grid-template-columns: 1fr; gap: 16px; }
+    .stage, .buy { position: static; }
+    .thumbs { order: 2; flex-direction: row; position: static; max-height: none; overflow-x: auto; }
+    .thumb { width: 64px; }
+    .stage { order: 1; }
+    .buy { order: 3; }
+    .vgrid .info { order: 4; grid-column: auto; }
+    .arrow { opacity: 1; }
+  }
   @media (max-width: 620px) {
     body { font-size: 16px; }
-    .grid { grid-template-columns: 1fr; }
-    .features, .prices, .steps, .gallery { grid-template-columns: 1fr; }
+    .products { grid-template-columns: 1fr 1fr; gap: 22px 10px; }
+    .features, .steps { grid-template-columns: 1fr; }
     .stack { height: 300px; }
     section { padding: 52px 0; }
     .dark, .contact { border-radius: 26px; }
+    .catalog { border-radius: 20px; padding: 16px 12px; }
+    .pprice b { font-size: 17px; }
   }
 </style>
 </head>
@@ -152,8 +220,8 @@
   <div class="wrap nav">
     <a class="logo" href="#top">shureck<span>.</span>design</a>
     <nav class="nav-links">
-      <a href="#works">Работы</a>
-      <a href="#price">Цены</a>
+      <a href="#works">Каталог</a>
+      <a href="#price">Цена</a>
       <a href="#process">Как работаю</a>
       <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать</a>
     </nav>
@@ -165,27 +233,27 @@
     <div>
       <span class="eyebrow">Дизайн карточек товара</span>
       <h1>Инфографика для <em>Wildberries</em> и&nbsp;<em>Ozon</em>, которая продаёт с&nbsp;первого слайда</h1>
-      <p class="lead">Главный слайд в&nbsp;нескольких вариантах, преимущества, схемы и&nbsp;размеры. Нет фото товара&nbsp;— сделаю 3D-рендер. Отдаю исходник в&nbsp;Figma: тексты и&nbsp;цифры меняете сами.</p>
+      <p class="lead">Главный слайд в&nbsp;нескольких вариантах, преимущества, схемы и&nbsp;размеры. Нет хороших фото&nbsp;— сгенерирую сцену с&nbsp;товаром нейросетью. Отдаю исходник в&nbsp;Figma: тексты и&nbsp;цифры меняете сами.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Обсудить карточку в Telegram</a>
         <a class="btn btn-ghost" href="#works">Смотреть работы</a>
       </div>
       <div class="facts">
+        <span class="fact"><b>200 ₽</b> за слайд</span>
         <span class="fact">900×1200, формат 3:4</span>
         <span class="fact">2–3 варианта главного слайда</span>
         <span class="fact">Исходники в Figma</span>
-        <span class="fact">Первые варианты за 1 день</span>
       </div>
     </div>
     <div class="stack" id="stack"></div>
   </div>
 
   <section id="works">
-    <div class="section-head">
-      <div><span class="eyebrow">Работы</span><h2>5 карточек в разных стилях</h2></div>
-      <p>От премиальной косметики до детских игрушек. Нажмите на работу, чтобы посмотреть все слайды.</p>
+    <div class="catalog">
+      <div class="catalog-top"><h2>Каталог работ</h2><span class="count" id="count"></span></div>
+      <div class="chips" id="chips"></div>
+      <div class="products" id="grid"></div>
     </div>
-    <div class="grid" id="grid"></div>
   </section>
 
   <section id="included">
@@ -193,20 +261,31 @@
     <div class="features">
       <div class="feature"><span class="num">01</span><h3>Главный слайд в 2–3 вариантах</h3><p>Выбираете лучший или просите собрать из нескольких. Текст читается с экрана телефона.</p></div>
       <div class="feature"><span class="num">02</span><h3>Слайды, которые отвечают на вопросы</h3><p>Преимущества, состав, схемы, размеры, комплектация — всё, что спрашивают в отзывах.</p></div>
-      <div class="feature"><span class="num">03</span><h3>3D-рендер вместо фотосессии</h3><p>Если фото нет или оно слабое, отрисую товар в 3D в любом ракурсе и цвете.</p></div>
+      <div class="feature"><span class="num">03</span><h3>Фото товара с помощью нейросети</h3><p>Нет фото или оно слабое — сгенерирую товар в нужной сцене и подготовлю его под карточку.</p></div>
       <div class="feature"><span class="num">04</span><h3>Редактируемый Figma</h3><p>Тексты, цифры и плашки — отдельными слоями. Поменять цену или характеристику можно без меня.</p></div>
     </div>
   </section>
 
   <section id="price" class="dark">
     <div class="wrap" style="width: min(1100px, 100% - 48px)">
-      <div class="section-head"><div><span class="eyebrow">Цены</span><h2>Честно и без сюрпризов</h2></div><p>Точную сумму назову после ТЗ. Правки в рамках задачи входят в стоимость.</p></div>
-      <div class="prices">
-        <div class="price"><h3>Главный слайд</h3><div class="sum">от 1 200 ₽</div><div class="note">2–3 варианта на выбор</div><ul><li>Анализ конкурентов в нише</li><li>Крупный заголовок и выгоды</li><li>Исходник в Figma</li></ul></div>
-        <div class="price hot"><h3>Карточка под ключ</h3><div class="sum">от 2 500 ₽</div><div class="note">главный + 4 слайда</div><ul><li>Единый стиль всех слайдов</li><li>Схемы, размеры, комплектация</li><li>2 раунда правок</li></ul></div>
-        <div class="price"><h3>Дополнительный слайд</h3><div class="sum">от 400 ₽</div><div class="note">в уже согласованном стиле</div><ul><li>Для серий и вариаций товара</li><li>Скидка от 10 слайдов</li><li>3D-рендер товара — отдельно</li></ul></div>
+      <div class="section-head"><div><span class="eyebrow">Цена</span><h2>Одна цена на всё</h2></div><p>Без пакетов и доплат за «сложность»: считаю только количество слайдов.</p></div>
+      <div class="price-box">
+        <div class="price-main">
+          <div><div class="sum">200 ₽</div><div class="per">за слайд 900×1200</div></div>
+          <div class="ex">Карточка из 5 слайдов — 1 000 ₽<br>Серия из 10 товаров по 5 слайдов — 10 000 ₽</div>
+        </div>
+        <div class="price-list">
+          <h3>В цену слайда входит</h3>
+          <ul>
+            <li>2–3 варианта главного слайда на выбор</li>
+            <li>Генерация и обработка фото товара</li>
+            <li>Правки в рамках ТЗ</li>
+            <li>Готовые файлы PNG/JPG под требования площадки</li>
+            <li>Исходник в Figma с редактируемыми слоями</li>
+          </ul>
+        </div>
       </div>
-      <p class="terms">Работаю как самозанятый: договор и чек на каждую оплату. Предоплата 25%, остальное после приёмки. Можно через безопасную сделку Kwork.</p>
+      <p class="terms">Работаю как самозанятый: договор и чек на каждую оплату. Предоплата 25%, остальное после приёмки.</p>
     </div>
   </section>
 
@@ -216,7 +295,7 @@
       <div class="step"><h3>ТЗ и материалы</h3><p>Товар, фото или референсы, текст и пожелания по стилю.</p></div>
       <div class="step"><h3>Варианты главного</h3><p>2–3 варианта главного слайда в течение дня.</p></div>
       <div class="step"><h3>Согласование</h3><p>Выбираете стиль, вношу правки.</p></div>
-      <div class="step"><h3>Остальные слайды</h3><p>Делаю всю карточку в утверждённом стиле.</p></div>
+      <div class="step"><h3>Остальные слайды</h3><p>Делаю все карточки в утверждённом стиле.</p></div>
       <div class="step"><h3>Файлы и исходники</h3><p>PNG/JPG 900×1200 и ссылка на Figma.</p></div>
     </div>
   </section>
@@ -229,79 +308,164 @@
       </div>
       <div class="links">
         <a class="btn" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать в Telegram</a>
-        <a class="btn alt" href="mailto:sashalev200149@gmail.com">sashalev200149@gmail.com</a>
-        <a class="btn alt" href="https://kwork.ru/user/shureck" target="_blank" rel="noopener">Заказать на Kwork</a>
+        <a class="btn alt" href="mailto:pubgihamara8@gmail.com">pubgihamara8@gmail.com</a>
+        <a class="btn alt" href="https://profi.ru/profile/LevandrovskiyAM/" target="_blank" rel="noopener">Профиль на Профи.ру</a>
       </div>
     </div>
   </section>
 </main>
 
-<div class="wrap"><footer><span>© Александр, дизайн карточек для маркетплейсов</span><span>Бренды в работах вымышленные, товары отрисованы в 3D</span></footer></div>
+<div class="wrap"><footer><span>© Александр, дизайн карточек для маркетплейсов</span><span>Бренды в демо-работах вымышленные</span></footer></div>
 
-<div class="modal" id="modal" aria-hidden="true">
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="m-title">
-    <button class="close" id="m-close" aria-label="Закрыть">×</button>
-    <h2 id="m-title"></h2>
-    <div class="tags" id="m-tags"></div>
-    <p class="desc" id="m-text"></p>
-    <div class="gallery" id="m-gallery"></div>
-    <div class="cta"><a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Хочу так же для своего товара</a></div>
+<div class="view" id="view" aria-hidden="true">
+  <div class="vbar"><div class="wrap">
+    <div class="crumbs"><button id="v-home">Каталог работ</button> / <span id="v-cat"></span></div>
+    <button class="vclose" id="v-close" aria-label="Закрыть">×</button>
+  </div></div>
+  <div class="wrap">
+    <div class="vhead"><div class="brand" id="v-brand"></div><h1 id="v-title"></h1><div class="sub" id="v-sub"></div></div>
+    <div class="vgrid">
+      <div class="thumbs" id="v-thumbs"></div>
+      <div class="stage">
+        <div class="main" id="v-main">
+          <div id="v-media"></div>
+          <button class="arrow prev" id="v-prev" aria-label="Предыдущий слайд">‹</button>
+          <button class="arrow next" id="v-next" aria-label="Следующий слайд">›</button>
+          <div class="counter" id="v-counter"></div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="spec"><h3>Характеристики</h3><dl id="v-spec"></dl></div>
+        <div class="about"><h3>О работе</h3><p id="v-text"></p><div class="tags" id="v-tags"></div></div>
+      </div>
+      <aside class="buy">
+        <div class="big">200 ₽ <small>/ слайд</small></div>
+        <div class="calc" id="v-calc"></div>
+        <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Заказать такую же</a>
+        <a class="btn alt" href="https://profi.ru/profile/LevandrovskiyAM/" target="_blank" rel="noopener">Написать на Профи.ру</a>
+        <div class="note">Предоплата 25%, остальное после приёмки. Договор и чек самозанятого.</div>
+      </aside>
+    </div>
+    <div class="more-row"><h3>Другие работы</h3><div class="products" id="v-more"></div></div>
   </div>
 </div>
 
 <script>
-const WORKS = [{"id": "01-2_serumcards", "cat": "market", "title": "Инфографика: сыворотка для лица", "text": "Светлый премиальный стиль: главный слайд с выгодами, активные компоненты, как применять, результат через 4 недели и состав. Флакон — мой 3D-рендер, фото не понадобилось.", "tags": ["косметика", "5 слайдов", "3D-рендер"], "cover": "assets/works/01-2_serumcards/cover.webp", "media": [{"type": "img", "src": "assets/works/01-2_serumcards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-2_serumcards/2_slide_actives.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-2_serumcards/3_slide_howto.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-2_serumcards/4_slide_result.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-2_serumcards/5_slide_volume.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/01-2_serumcards/6_slides.mp4", "poster": "assets/works/01-2_serumcards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "02-3_earbudscards", "cat": "market", "title": "Инфографика: беспроводные наушники", "text": "Тёмный технологичный стиль с неоновым акцентом: автономность крупными цифрами, схема шумоподавления, защита от влаги и комплектация.", "tags": ["электроника", "5 слайдов", "3D-рендер"], "cover": "assets/works/02-3_earbudscards/cover.webp", "media": [{"type": "img", "src": "assets/works/02-3_earbudscards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-3_earbudscards/2_slide_anc.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-3_earbudscards/3_slide_battery.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-3_earbudscards/4_slide_water.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-3_earbudscards/5_slide_kit.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/02-3_earbudscards/6_slides.mp4", "poster": "assets/works/02-3_earbudscards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "03-4_candlecards", "cat": "market", "title": "Инфографика: ароматическая свеча", "text": "Тёплый эко-стиль: горящая свеча, пирамида аромата, натуральный состав, 40 часов горения и подарочная упаковка.", "tags": ["товары для дома", "5 слайдов", "эко-стиль"], "cover": "assets/works/03-4_candlecards/cover.webp", "media": [{"type": "img", "src": "assets/works/03-4_candlecards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-4_candlecards/2_slide_aroma.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-4_candlecards/3_slide_natural.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-4_candlecards/4_slide_burn_time.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-4_candlecards/5_slide_size_gift.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/03-4_candlecards/6_slides.mp4", "poster": "assets/works/03-4_candlecards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "04-5_kidstoycards", "cat": "market", "title": "Инфографика: детский сортер", "text": "Яркая детская инфографика: что развивает игрушка, почему безопасна, комплектация с подписями и размеры.", "tags": ["детские товары", "5 слайдов", "яркий стиль"], "cover": "assets/works/04-5_kidstoycards/cover.webp", "media": [{"type": "img", "src": "assets/works/04-5_kidstoycards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-5_kidstoycards/2_slide_develops.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-5_kidstoycards/3_slide_safe.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-5_kidstoycards/4_slide_kit.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-5_kidstoycards/5_slide_size.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/04-5_kidstoycards/6_slides.mp4", "poster": "assets/works/04-5_kidstoycards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "05-1_muginfographic", "cat": "market", "title": "Инфографика: термокружка", "text": "Главный слайд с выгодами, схема слоёв стенки «держит тепло 12 часов», размеры с выносками и комплектация с цветами.", "tags": ["посуда", "4 слайда", "схемы"], "cover": "assets/works/05-1_muginfographic/cover.webp", "media": [{"type": "img", "src": "assets/works/05-1_muginfographic/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-1_muginfographic/2_slide_heat.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-1_muginfographic/3_slide_size.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-1_muginfographic/4_slide_colors.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/05-1_muginfographic/5_slides.mp4", "poster": "assets/works/05-1_muginfographic/5_slides.webp", "w": 900, "h": 1200}]}];
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const WORKS = [{"id": "01-9_astro", "cat": "market", "title": "Ночник-проектор «Космонавт»", "text": "Работа для реального продавца: главный слайд с крупными цифрами и иконками характеристик и слайд «Превратит комнату в космос», где сразу видно, как ночник проецирует звёздное небо. Заказчик одобрил варианты с первого раза.", "tags": ["реальный заказ", "космический стиль"], "brand": "Заказ клиента", "style": "Космос, неон", "category": "Товары для дома", "slides": 2, "cover": "assets/works/01-9_astro/cover.webp", "media": [{"type": "img", "src": "assets/works/01-9_astro/m1_b.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-9_astro/m1_s2.webp", "w": 900, "h": 1200}]}, {"id": "02-7_sneakercards", "cat": "market", "title": "Беговые кроссовки", "text": "Спортивный стиль с движением: «легче воздуха» на главном, кроссовок на асфальте, устройство подошвы с выносками, дышащая сетка крупным планом и расцветки с размерной сеткой.", "tags": ["обувь", "5 слайдов", "динамика"], "brand": "Kelvo", "style": "Спортивный, динамичный", "category": "Обувь", "slides": 5, "cover": "assets/works/02-7_sneakercards/cover.webp", "media": [{"type": "img", "src": "assets/works/02-7_sneakercards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/2_slide_sole.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/3_slide_mesh.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/4_slide_run.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/5_slide_colors.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/02-7_sneakercards/6_slides.mp4", "poster": "assets/works/02-7_sneakercards/6_slides.webp", "w": 800, "h": 1067}]}, {"id": "03-8_coffeecards", "cat": "market", "title": "Эспрессо-кофемашина", "text": "Тёмный премиальный стиль: «эспрессо как в кофейне», давление 15 бар, готовность за 30 секунд, капучинатор и комплектация с размерами.", "tags": ["техника", "5 слайдов", "премиум"], "brand": "Каффора", "style": "Тёмный премиум", "category": "Бытовая техника", "slides": 5, "cover": "assets/works/03-8_coffeecards/cover.webp", "media": [{"type": "img", "src": "assets/works/03-8_coffeecards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/2_slide_pressure.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/3_slide_milk.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/4_slide_morning.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/5_slide_size_kit.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/03-8_coffeecards/6_slides.mp4", "poster": "assets/works/03-8_coffeecards/6_slides.webp", "w": 800, "h": 1067}]}, {"id": "04-9_perfumecards", "cat": "market", "title": "Парфюмерная вода «Ночной вельвет»", "text": "Вечерний люкс-стиль: пирамида аромата, стойкость 10 часов, флакон крупным планом и подарочная коробка с выбором объёма.", "tags": ["парфюм", "5 слайдов", "люкс"], "brand": "Вельвет", "style": "Вечерний люкс", "category": "Парфюмерия", "slides": 5, "cover": "assets/works/04-9_perfumecards/cover.webp", "media": [{"type": "img", "src": "assets/works/04-9_perfumecards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/2_slide_notes.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/3_slide_bottle.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/4_slide_evening.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/5_slide_gift.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/04-9_perfumecards/6_slides.mp4", "poster": "assets/works/04-9_perfumecards/6_slides.webp", "w": 800, "h": 1067}]}, {"id": "05-10_robotvacuumcards", "cat": "market", "title": "Робот-пылесос с влажной уборкой", "text": "Светлый технологичный стиль: мощность всасывания, щётка против шерсти, карта уборки с запретными зонами и станция самоочистки.", "tags": ["техника", "5 слайдов", "схемы"], "brand": "Lumo", "style": "Светлый, технологичный", "category": "Бытовая техника", "slides": 5, "cover": "assets/works/05-10_robotvacuumcards/cover.webp", "media": [{"type": "img", "src": "assets/works/05-10_robotvacuumcards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/2_slide_power.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/3_slide_map.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/4_slide_pets.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/5_slide_station.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/05-10_robotvacuumcards/6_slides.mp4", "poster": "assets/works/05-10_robotvacuumcards/6_slides.webp", "w": 800, "h": 1067}]}, {"id": "06-2_serumcards", "cat": "market", "title": "Сыворотка для лица", "text": "Светлый премиальный стиль: главный слайд с выгодами, активные компоненты с процентами, как применять, результат через 4 недели и состав.", "tags": ["косметика", "5 слайдов", "минимализм"], "brand": "averlin", "style": "Светлый премиум", "category": "Косметика", "slides": 5, "cover": "assets/works/06-2_serumcards/cover.webp", "media": [{"type": "img", "src": "assets/works/06-2_serumcards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/2_slide_actives.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/3_slide_howto.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/4_slide_result.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/5_slide_volume.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/06-2_serumcards/6_slides.mp4", "poster": "assets/works/06-2_serumcards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "07-3_earbudscards", "cat": "market", "title": "Беспроводные наушники", "text": "Тёмный технологичный стиль с неоновым акцентом: автономность крупными цифрами, схема шумоподавления, защита от влаги и комплектация.", "tags": ["электроника", "5 слайдов", "крупные цифры"], "brand": "vaylo", "style": "Тёмный, неон", "category": "Электроника", "slides": 5, "cover": "assets/works/07-3_earbudscards/cover.webp", "media": [{"type": "img", "src": "assets/works/07-3_earbudscards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-3_earbudscards/2_slide_anc.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-3_earbudscards/3_slide_battery.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-3_earbudscards/4_slide_water.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-3_earbudscards/5_slide_kit.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/07-3_earbudscards/6_slides.mp4", "poster": "assets/works/07-3_earbudscards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "08-4_candlecards", "cat": "market", "title": "Ароматическая свеча", "text": "Тёплый эко-стиль: горящая свеча, пирамида аромата, натуральный состав, 40 часов горения и подарочная упаковка.", "tags": ["дом", "5 слайдов", "эко-стиль"], "brand": "Ольха", "style": "Тёплый эко", "category": "Товары для дома", "slides": 5, "cover": "assets/works/08-4_candlecards/cover.webp", "media": [{"type": "img", "src": "assets/works/08-4_candlecards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/2_slide_aroma.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/3_slide_natural.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/4_slide_burn_time.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/5_slide_size_gift.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/08-4_candlecards/6_slides.mp4", "poster": "assets/works/08-4_candlecards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "09-5_kidstoycards", "cat": "market", "title": "Деревянный сортер «Домик»", "text": "Яркая детская инфографика: что развивает игрушка, почему безопасна, комплектация с подписями и размеры.", "tags": ["детям", "5 слайдов", "яркий стиль"], "brand": "Тилибом", "style": "Яркий детский", "category": "Детские товары", "slides": 5, "cover": "assets/works/09-5_kidstoycards/cover.webp", "media": [{"type": "img", "src": "assets/works/09-5_kidstoycards/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-5_kidstoycards/2_slide_develops.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-5_kidstoycards/3_slide_safe.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-5_kidstoycards/4_slide_kit.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-5_kidstoycards/5_slide_size.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/09-5_kidstoycards/6_slides.mp4", "poster": "assets/works/09-5_kidstoycards/6_slides.webp", "w": 900, "h": 1200}]}, {"id": "10-1_muginfographic", "cat": "market", "title": "Термокружка «Тропа 450»", "text": "Главный слайд с выгодами, схема слоёв стенки «держит тепло 12 часов», размеры с выносками и комплектация с цветами.", "tags": ["посуда", "4 слайда", "схемы"], "brand": "Полюс", "style": "Спокойный, схемы", "category": "Посуда", "slides": 4, "cover": "assets/works/10-1_muginfographic/cover.webp", "media": [{"type": "img", "src": "assets/works/10-1_muginfographic/1_slide_main.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/2_slide_heat.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/3_slide_size.webp", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/4_slide_colors.webp", "w": 900, "h": 1200}, {"type": "video", "src": "assets/works/10-1_muginfographic/5_slides.mp4", "poster": "assets/works/10-1_muginfographic/5_slides.webp", "w": 900, "h": 1200}]}];
+const PRICE = 200;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+const plural = (n, a, b, c) => { const m10 = n % 10, m100 = n % 100; return m10 === 1 && m100 !== 11 ? a : (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20) ? b : c); };
+const imgs = w => w.media.filter(m => m.type === "img");
+const rub = n => n.toLocaleString("ru-RU") + " ₽";
 
-// веер из первых слайдов в первом экране
+// первый экран: веер из главных слайдов
 document.getElementById("stack").innerHTML = WORKS.slice(0, 3)
-  .map(w => (w.media.find(m => m.type === "img") || {src: w.cover}))
+  .map(w => (imgs(w)[0] || {src: w.cover}))
   .map((m, i) => `<img src="${m.src}" alt="" ${i ? 'loading="lazy"' : ""}>`).join("");
 
-document.getElementById("grid").innerHTML = WORKS.map((w, i) => `
-  <button class="work" data-i="${i}">
-    <div class="thumb"><img src="${w.cover}" alt="${esc(w.title)}" loading="lazy"></div>
-    <div class="body">
-      <h3>${esc(w.title)}</h3>
-      <div class="tags">${w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
-      <div class="more">Смотреть все слайды →</div>
+function card(w) {
+  const i = WORKS.indexOf(w), sl = imgs(w).slice(0, 6);
+  const badge = w.brand === "Заказ клиента"
+    ? '<span class="badge real">Реальный заказ</span>'
+    : `<span class="badge">${w.slides} ${plural(w.slides, "слайд", "слайда", "слайдов")}</span>`;
+  return `<button class="product" data-i="${i}">
+    <div class="pimg" data-srcs="${esc(JSON.stringify(sl.map(m => m.src)))}">
+      <img src="${(sl[0] || {src: w.cover}).src}" alt="${esc(w.title)}" loading="lazy">
+      ${badge}
+      <div class="segs">${sl.map((_, k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</div>
     </div>
-  </button>`).join("");
+    <div class="pprice"><b>${PRICE} ₽</b><span>/ слайд</span></div>
+    <div class="pname"><strong>${esc(w.brand)}</strong> / ${esc(w.title)}</div>
+    <div class="pmeta">${esc(w.category)} · ${esc(w.style)}</div>
+    <span class="pbtn">Смотреть слайды</span>
+  </button>`;
+}
 
-const modal = document.getElementById("modal");
+// листание слайдов при наведении, как в каталоге маркетплейса
+function bindScrub(root) {
+  root.querySelectorAll(".pimg").forEach(box => {
+    const srcs = JSON.parse(box.dataset.srcs), img = box.querySelector("img"), segs = box.querySelectorAll(".segs i");
+    if (srcs.length < 2) return;
+    let cur = 0;
+    const show = k => { if (k === cur) return; cur = k; img.src = srcs[k]; segs.forEach((s, j) => s.classList.toggle("on", j === k)); };
+    box.addEventListener("mousemove", e => { const r = box.getBoundingClientRect(); show(Math.min(srcs.length - 1, Math.floor((e.clientX - r.left) / r.width * srcs.length))); });
+    box.addEventListener("mouseleave", () => show(0));
+  });
+}
+
+// каталог и фильтр по категориям
+const cats = ["Все", ...new Set(WORKS.map(w => w.category))];
+let filter = "Все";
+function renderGrid() {
+  const list = WORKS.filter(w => filter === "Все" || w.category === filter);
+  document.getElementById("grid").innerHTML = list.map(card).join("");
+  document.getElementById("count").textContent = `${list.length} ${plural(list.length, "карточка", "карточки", "карточек")}`;
+  document.getElementById("chips").innerHTML = cats.map(c => `<button class="chip ${c === filter ? "on" : ""}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+  bindScrub(document.getElementById("grid"));
+}
+document.getElementById("chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { filter = b.dataset.c; renderGrid(); } });
+renderGrid();
+
+// страница работы
+const view = document.getElementById("view");
+let cw = null, cs = 0;
+function showSlide(k) {
+  const n = cw.media.length; cs = (k + n) % n;
+  const m = cw.media[cs];
+  document.getElementById("v-media").innerHTML = m.type === "video"
+    ? `<video src="${m.src}" poster="${m.poster}" autoplay muted loop playsinline></video>`
+    : `<img src="${m.src}" alt="${esc(cw.title)}">`;
+  document.getElementById("v-counter").textContent = `${cs + 1} / ${n}`;
+  document.querySelectorAll("#v-thumbs .thumb").forEach((t, j) => t.classList.toggle("on", j === cs));
+}
 function openWork(i) {
-  const w = WORKS[i];
-  document.getElementById("m-title").textContent = w.title;
-  document.getElementById("m-text").textContent = w.text;
-  document.getElementById("m-tags").innerHTML = w.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("");
-  document.getElementById("m-gallery").innerHTML = w.media.map(m => {
-    const wide = m.w / m.h > 1.1 ? " wide" : "";
-    return m.type === "video"
-      ? `<figure class="${wide}"><video src="${m.src}" poster="${m.poster}" autoplay muted loop playsinline preload="metadata"></video></figure>`
-      : `<figure class="${wide}"><img src="${m.src}" width="${m.w}" height="${m.h}" alt="${esc(w.title)}" loading="lazy"></figure>`;
-  }).join("");
-  modal.classList.add("open");
-  modal.setAttribute("aria-hidden", "false");
-  modal.scrollTop = 0;
-  document.body.style.overflow = "hidden";
-  document.body.classList.add("modal-open");
-  history.replaceState(null, "", "#" + w.id);
+  cw = WORKS[i];
+  document.getElementById("v-cat").textContent = cw.category;
+  document.getElementById("v-brand").textContent = cw.brand;
+  document.getElementById("v-title").textContent = cw.title;
+  document.getElementById("v-sub").textContent = `${cw.slides} ${plural(cw.slides, "слайд", "слайда", "слайдов")}` + (cw.media.length > cw.slides ? " + анимация перелистывания" : "");
+  document.getElementById("v-thumbs").innerHTML = cw.media.map((m, k) =>
+    `<button class="thumb" data-k="${k}"><img src="${m.type === "video" ? m.poster : m.src}" alt="">${m.type === "video" ? '<span class="play">▶</span>' : ""}</button>`).join("");
+  document.getElementById("v-spec").innerHTML = [
+    ["Категория", cw.category], ["Стиль", cw.style], ["Слайдов", cw.slides], ["Формат", "900×1200, 3:4"], ["Исходник", "Figma, слои"],
+  ].map(([k, v]) => `<div><dt>${k}</dt><span class="dots"></span><dd>${esc(v)}</dd></div>`).join("");
+  document.getElementById("v-text").textContent = cw.text;
+  document.getElementById("v-tags").innerHTML = cw.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("");
+  document.getElementById("v-calc").innerHTML = `Такая карточка из ${cw.slides} ${plural(cw.slides, "слайда", "слайдов", "слайдов")} — <b>${rub(cw.slides * PRICE)}</b>`;
+  document.getElementById("v-more").innerHTML = WORKS.filter(w => w !== cw).slice(0, 6).map(card).join("");
+  bindScrub(document.getElementById("v-more"));
+  showSlide(0);
+  view.classList.add("open"); view.setAttribute("aria-hidden", "false"); view.scrollTop = 0;
+  document.body.classList.add("view-open"); document.body.style.overflow = "hidden";
+  history.replaceState(null, "", "#" + cw.id);
 }
 function closeWork() {
-  modal.classList.remove("open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  document.body.classList.remove("modal-open");
-  document.getElementById("m-gallery").innerHTML = "";
+  view.classList.remove("open"); view.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("view-open"); document.body.style.overflow = "";
+  document.getElementById("v-media").innerHTML = "";
   history.replaceState(null, "", location.pathname);
 }
-document.getElementById("grid").addEventListener("click", e => {
-  const b = e.target.closest(".work");
-  if (b) openWork(+b.dataset.i);
+document.addEventListener("click", e => {
+  const p = e.target.closest(".product");
+  if (p) { openWork(+p.dataset.i); return; }
+  const t = e.target.closest("#v-thumbs .thumb");
+  if (t) showSlide(+t.dataset.k);
 });
-document.getElementById("m-close").onclick = closeWork;
-modal.addEventListener("click", e => { if (e.target === modal) closeWork(); });
-addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("open")) closeWork(); });
+document.getElementById("v-prev").onclick = () => showSlide(cs - 1);
+document.getElementById("v-next").onclick = () => showSlide(cs + 1);
+document.getElementById("v-close").onclick = closeWork;
+document.getElementById("v-home").onclick = () => { closeWork(); document.getElementById("works").scrollIntoView(); };
+addEventListener("keydown", e => {
+  if (!view.classList.contains("open")) return;
+  if (e.key === "Escape") closeWork();
+  if (e.key === "ArrowRight") showSlide(cs + 1);
+  if (e.key === "ArrowLeft") showSlide(cs - 1);
+});
+// свайп по главному слайду
+let sx = null;
+const mainEl = document.getElementById("v-main");
+mainEl.addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, {passive: true});
+mainEl.addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) showSlide(cs + (dx < 0 ? 1 : -1)); sx = null; });
 addEventListener("scroll", () => document.querySelector("header").classList.toggle("scrolled", scrollY > 10), {passive: true});
 const fromHash = WORKS.findIndex(w => "#" + w.id === location.hash);
 if (fromHash >= 0) openWork(fromHash);
