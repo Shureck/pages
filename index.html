@@ -224,7 +224,12 @@
     .fact { font-size: 13px; padding: 7px 12px; }
     /* каталог: фильтры одной строкой с прокруткой, товары в две колонки как в приложении маркетплейса */
     .catalog { border-radius: 20px; padding: 18px 12px; }
-    .chips { flex-wrap: nowrap; overflow-x: auto; margin: 14px -12px 18px; padding: 0 12px; scrollbar-width: none; }
+    /* фильтры листаются внутри карточки каталога; край, за которым есть ещё фильтры, плавно гаснет */
+    .chips { flex-wrap: nowrap; overflow-x: auto; margin: 14px 0 18px; scrollbar-width: none; --fl: 0px; --fr: 36px;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 var(--fl), #000 calc(100% - var(--fr)), transparent 100%);
+              mask-image: linear-gradient(90deg, transparent 0, #000 var(--fl), #000 calc(100% - var(--fr)), transparent 100%); }
+    .chips.scrolled { --fl: 36px; }
+    .chips.at-end { --fr: 0px; }
     .chips::-webkit-scrollbar { display: none; }
     .chip { flex: none; padding: 8px 14px; font-size: 13.5px; }
     .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px; }
@@ -361,7 +366,6 @@
       <div class="links">
         <a class="btn" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать в Telegram</a>
         <a class="btn alt" href="mailto:pubgihamara8@gmail.com">pubgihamara8@gmail.com</a>
-        <a class="btn alt" href="https://profi.ru/profile/LevandrovskiyAM/" target="_blank" rel="noopener">Профиль на Профи.ру</a>
       </div>
     </div>
   </section>
@@ -394,7 +398,7 @@
         <div class="big">200 ₽ <small>/ слайд</small></div>
         <div class="calc" id="v-calc"></div>
         <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Заказать такую же</a>
-        <a class="btn alt" href="https://profi.ru/profile/LevandrovskiyAM/" target="_blank" rel="noopener">Написать на Профи.ру</a>
+        <a class="btn alt" href="mailto:pubgihamara8@gmail.com">Написать на почту</a>
         <div class="note">Предоплата 25%, остальное после приёмки. Договор и чек самозанятого.</div>
       </aside>
     </div>
@@ -450,8 +454,21 @@ function renderGrid() {
   document.getElementById("count").textContent = `${list.length} ${plural(list.length, "карточка", "карточки", "карточек")}`;
   document.getElementById("chips").innerHTML = cats.map(c => `<button class="chip ${c === filter ? "on" : ""}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
   bindScrub(document.getElementById("grid"));
+  chipsFade();
 }
-document.getElementById("chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (b) { filter = b.dataset.c; renderGrid(); } });
+const chipsBox = document.getElementById("chips");
+function chipsFade() {
+  chipsBox.classList.toggle("scrolled", chipsBox.scrollLeft > 2);
+  chipsBox.classList.toggle("at-end", chipsBox.scrollLeft + chipsBox.clientWidth >= chipsBox.scrollWidth - 2);
+}
+chipsBox.addEventListener("scroll", chipsFade, {passive: true});
+addEventListener("resize", chipsFade);
+chipsBox.addEventListener("click", e => {
+  const b = e.target.closest(".chip");
+  if (!b) return;
+  filter = b.dataset.c; renderGrid();
+  chipsBox.querySelector(".chip.on").scrollIntoView({block: "nearest", inline: "nearest", behavior: "smooth"});
+});
 renderGrid();
 
 // страница работы
