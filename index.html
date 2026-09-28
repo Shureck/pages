@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Инфографика для Wildberries и Ozon — Александр</title>
-<meta name="description" content="Дизайн карточек товара для маркетплейсов: главный слайд в нескольких вариантах, инфографика, схемы и исходники в Figma. 200 ₽ за слайд.">
-<meta property="og:title" content="Инфографика для карточек Wildberries и Ozon — 200 ₽ за слайд">
-<meta property="og:description" content="Карточки, которые читаются с телефона и продают. Исходники в Figma.">
+<meta name="description" content="Портфолио дизайнера карточек товаров для Wildberries и Ozon: главные слайды, инфографика, схемы, генерация фото товара нейросетями, сборка в Figma.">
+<meta property="og:title" content="Портфолио: карточки товаров для Wildberries и Ozon">
+<meta property="og:description" content="10 карточек в разных нишах: главные слайды, инфографика, схемы.">
 <meta property="og:image" content="https://shureck.github.io/pages/assets/og.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -91,10 +91,7 @@
   .pimg .segs i { flex: 1; height: 3px; border-radius: 2px; background: rgba(255, 255, 255, .55); }
   .pimg .segs i.on { background: #fff; }
   .product:hover .segs, .product:focus-visible .segs { opacity: 1; }
-  .pprice { margin-top: 10px; display: flex; align-items: baseline; gap: 6px; }
-  .pprice b { font-size: 20px; font-weight: 800; color: var(--accent); }
-  .pprice span { color: var(--grey); font-size: 13px; font-weight: 600; }
-  .pname { margin-top: 4px; font-size: 14px; line-height: 1.35; min-height: calc(1.35em * 2); color: var(--grey); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pname { margin-top: 10px; font-size: 14px; line-height: 1.35; min-height: calc(1.35em * 2); color: var(--grey); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
   .pname strong { color: var(--ink); font-weight: 700; }
   .pmeta { margin-top: 6px; font-size: 12.5px; color: var(--grey); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .pbtn { margin-top: auto; width: 100%; padding: 11px; border-radius: 12px; background: var(--accent); color: #fff; font-weight: 700; font-size: 14px; text-align: center; transition: background .15s; }
@@ -150,7 +147,7 @@
   .vhead .brand { color: var(--accent); font-weight: 700; font-size: 14px; }
   .vhead h1 { font-family: Manrope, sans-serif; font-weight: 800; letter-spacing: -.01em; font-size: clamp(22px, 2.6vw, 30px); margin-top: 4px; }
   .vhead .sub { color: var(--grey); font-size: 14px; margin-top: 6px; }
-  .vgrid { display: grid; grid-template-columns: 76px minmax(0, 520px) minmax(0, 1fr) 320px; gap: 22px; padding: 12px 0 60px; align-items: start; }
+  .vgrid { display: grid; grid-template-columns: 76px minmax(0, 560px) minmax(0, 1fr); gap: 22px; padding: 12px 0 60px; align-items: start; }
   .thumbs { display: flex; flex-direction: column; gap: 8px; position: sticky; top: 76px; max-height: calc(100vh - 100px); overflow-y: auto; }
   .thumb { width: 76px; aspect-ratio: 3 / 4; border-radius: 10px; overflow: hidden; border: 2px solid transparent; padding: 0; background: var(--soft-bg); cursor: pointer; position: relative; flex: none; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -174,20 +171,12 @@
   .about p { margin: 0; font-size: 15px; line-height: 1.6; }
   .about .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .tag { font-size: 12.5px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: var(--soft-bg); color: var(--muted); }
-  .buy { position: sticky; top: 76px; border-radius: 18px; padding: 22px; box-shadow: 0 6px 30px rgba(20, 20, 40, .12); background: #fff; }
-  .buy .big { font-size: 34px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .buy .big small { font-size: 16px; color: var(--grey); font-weight: 600; }
-  .buy .calc { margin-top: 10px; font-size: 14.5px; color: var(--muted); }
-  .buy .calc b { color: var(--ink); }
-  .buy .btn { width: 100%; margin-top: 14px; border-radius: 14px; padding: 15px; }
-  .buy .btn.alt { background: var(--soft-bg); color: var(--ink); box-shadow: none; }
-  .buy .note { margin-top: 14px; font-size: 13px; color: var(--grey); line-height: 1.5; }
   .more-row { border-top: 1px solid #ececf0; padding: 28px 0 60px; }
   .more-row h3 { font-family: Manrope, sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0; margin-bottom: 18px; }
   .more-row .products { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); }
 
   @media (max-width: 1100px) {
-    .vgrid { grid-template-columns: 76px minmax(0, 1fr) 300px; }
+    .vgrid { grid-template-columns: 76px minmax(0, 520px); }
     .vgrid .info { grid-column: 2 / -1; }
   }
   @media (max-width: 960px) {
@@ -201,11 +190,10 @@
   }
   @media (max-width: 760px) {
     .vgrid { grid-template-columns: 1fr; gap: 16px; }
-    .stage, .buy { position: static; }
+    .stage { position: static; }
     .thumbs { order: 2; flex-direction: row; position: static; max-height: none; overflow-x: auto; }
     .thumb { width: 64px; }
     .stage { order: 1; }
-    .buy { order: 3; }
     .vgrid .info { order: 4; grid-column: auto; }
     .arrow { opacity: 1; }
   }
@@ -234,10 +222,7 @@
     .chip { flex: none; padding: 8px 14px; font-size: 13.5px; }
     .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 10px; }
     .pimg { border-radius: 12px; }
-    .pprice { margin-top: 8px; gap: 4px; }
-    .pprice b { font-size: 17px; }
-    .pprice span { font-size: 12px; }
-    .pname { font-size: 13px; }
+          .pname { font-size: 13px; }
     .pmeta { display: none; }
     .pgap { min-height: 10px; }
     .pbtn { padding: 9px 6px; font-size: 13px; border-radius: 10px; }
@@ -278,8 +263,7 @@
     <a class="logo" href="#top">shureck<span>.</span>design</a>
     <nav class="nav-links">
       <a href="#works">Каталог</a>
-      <a href="#price">Цена</a>
-      <a href="#process">Как работаю</a>
+      <a href="#contact">Контакты</a>
       <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать</a>
     </nav>
   </div>
@@ -288,18 +272,17 @@
 <main class="wrap">
   <div class="hero">
     <div>
-      <span class="eyebrow">Дизайн карточек товара</span>
-      <h1>Инфографика для <em>Wildberries</em> и&nbsp;<em>Ozon</em>, которая продаёт с&nbsp;первого слайда</h1>
-      <p class="lead">Главный слайд в&nbsp;нескольких вариантах, преимущества, схемы и&nbsp;размеры. Нет хороших фото&nbsp;— сгенерирую сцену с&nbsp;товаром нейросетью. Все исходники в&nbsp;Figma остаются у&nbsp;вас.</p>
+      <span class="eyebrow">Портфолио · дизайн карточек товара</span>
+      <h1>Карточки товаров и&nbsp;инфографика для <em>Wildberries</em> и&nbsp;<em>Ozon</em></h1>
+      <p class="lead">Главные слайды, преимущества, схемы и&nbsp;размеры. Фото и&nbsp;сцены с&nbsp;товаром генерирую нейросетями, дорабатываю в&nbsp;Photoshop, собираю в&nbsp;Figma.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Обсудить карточку в Telegram</a>
+        <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать в Telegram</a>
         <a class="btn btn-ghost" href="#works">Смотреть работы</a>
       </div>
       <div class="facts">
-        <span class="fact"><b>200 ₽</b> за слайд</span>
+        <span class="fact">10 работ в разных нишах</span>
         <span class="fact">900×1200, формат 3:4</span>
-        <span class="fact">2–3 варианта главного слайда</span>
-        <span class="fact">Исходники в Figma</span>
+        <span class="fact">Нейросети + Photoshop + Figma</span>
       </div>
     </div>
     <div class="stack" id="stack"></div>
@@ -313,55 +296,11 @@
     </div>
   </section>
 
-  <section id="included">
-    <div class="section-head"><div><span class="eyebrow">Что вы получаете</span><h2>Не просто красиво, а понятно покупателю</h2></div></div>
-    <div class="features">
-      <div class="feature"><span class="num">01</span><h3>Главный слайд в 2–3 вариантах</h3><p>Выбираете лучший или просите собрать из нескольких. Текст читается с экрана телефона.</p></div>
-      <div class="feature"><span class="num">02</span><h3>Слайды, которые отвечают на вопросы</h3><p>Преимущества, состав, схемы, размеры, комплектация — всё, что спрашивают в отзывах.</p></div>
-      <div class="feature"><span class="num">03</span><h3>Фото товара с помощью нейросети</h3><p>Нет фото или оно слабое — сгенерирую товар в нужной сцене и подготовлю его под карточку.</p></div>
-      <div class="feature"><span class="num">04</span><h3>Исходники у вас</h3><p>Отдаю макеты в Figma с аккуратными слоями. Они остаются у вас — пригодятся для новых товаров и акций.</p></div>
-    </div>
-  </section>
-
-  <section id="price" class="dark">
-    <div class="wrap" style="width: min(1100px, 100% - 48px)">
-      <div class="section-head"><div><span class="eyebrow">Цена</span><h2>Одна цена на всё</h2></div><p>Без пакетов и доплат за «сложность»: считаю только количество слайдов.</p></div>
-      <div class="price-box">
-        <div class="price-main">
-          <div><div class="sum">200 ₽</div><div class="per">за слайд 900×1200</div></div>
-          <div class="ex">Карточка из 5 слайдов — 1 000 ₽<br>Серия из 10 товаров по 5 слайдов — 10 000 ₽</div>
-        </div>
-        <div class="price-list">
-          <h3>В цену слайда входит</h3>
-          <ul>
-            <li>2–3 варианта главного слайда на выбор</li>
-            <li>Генерация и обработка фото товара</li>
-            <li>Правки в рамках ТЗ</li>
-            <li>Готовые файлы PNG/JPG под требования площадки</li>
-            <li>Исходник в Figma с редактируемыми слоями</li>
-          </ul>
-        </div>
-      </div>
-      <p class="terms">Работаю как самозанятый: договор и чек на каждую оплату. Предоплата 25%, остальное после приёмки.</p>
-    </div>
-  </section>
-
-  <section id="process">
-    <div class="section-head"><div><span class="eyebrow">Как работаю</span><h2>От ТЗ до готовых файлов</h2></div></div>
-    <div class="steps">
-      <div class="step"><h3>ТЗ и материалы</h3><p>Товар, фото или референсы, текст и пожелания по стилю.</p></div>
-      <div class="step"><h3>Варианты главного</h3><p>2–3 варианта главного слайда в течение дня.</p></div>
-      <div class="step"><h3>Согласование</h3><p>Выбираете стиль, вношу правки.</p></div>
-      <div class="step"><h3>Остальные слайды</h3><p>Делаю все карточки в утверждённом стиле.</p></div>
-      <div class="step"><h3>Файлы и исходники</h3><p>PNG/JPG 900×1200 и ссылка на Figma.</p></div>
-    </div>
-  </section>
-
   <section id="contact">
     <div class="contact">
       <div>
-        <h2>Пришлите товар — предложу варианты главного слайда</h2>
-        <p>Отвечаю быстро. Расскажите, что продаёте и на какой площадке, — посчитаю стоимость и сроки.</p>
+        <h2>Открыт к проектам и сотрудничеству</h2>
+        <p>Пишите в Telegram или на почту — отвечаю быстро.</p>
       </div>
       <div class="links">
         <a class="btn" href="https://t.me/artey_007" target="_blank" rel="noopener">Написать в Telegram</a>
@@ -394,13 +333,6 @@
         <div class="spec"><h3>Характеристики</h3><dl id="v-spec"></dl></div>
         <div class="about"><h3>О работе</h3><p id="v-text"></p><div class="tags" id="v-tags"></div></div>
       </div>
-      <aside class="buy">
-        <div class="big">200 ₽ <small>/ слайд</small></div>
-        <div class="calc" id="v-calc"></div>
-        <a class="btn btn-primary" href="https://t.me/artey_007" target="_blank" rel="noopener">Заказать такую же</a>
-        <a class="btn alt" href="mailto:pubgihamara8@gmail.com">Написать на почту</a>
-        <div class="note">Предоплата 25%, остальное после приёмки. Договор и чек самозанятого.</div>
-      </aside>
     </div>
     <div class="more-row"><h3>Другие работы</h3><div class="products" id="v-more"></div></div>
   </div>
@@ -408,11 +340,9 @@
 
 <script>
 const WORKS = [{"id": "01-9_astro", "cat": "market", "title": "Ночник-проектор «Космонавт»", "text": "Работа для реального продавца: главный слайд с крупными цифрами и иконками характеристик и слайд «Превратит комнату в космос», где сразу видно, как ночник проецирует звёздное небо. Заказчик одобрил варианты с первого раза.", "tags": ["реальный заказ", "космический стиль"], "brand": "Заказ клиента", "style": "Космос, неон", "category": "Товары для дома", "slides": 2, "cover": "assets/works/01-9_astro/cover.webp?v=aa2e87ae", "media": [{"type": "img", "src": "assets/works/01-9_astro/m1_b.webp?v=aa2e87ae", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/01-9_astro/m1_s2.webp?v=85d9c08f", "w": 900, "h": 1200}]}, {"id": "02-7_sneakercards", "cat": "market", "title": "Беговые кроссовки", "text": "Спортивный стиль с движением: «легче воздуха» на главном, кроссовок на асфальте, устройство подошвы с выносками, дышащая сетка крупным планом и расцветки с размерной сеткой.", "tags": ["обувь", "5 слайдов", "динамика"], "brand": "Kelvo", "style": "Спортивный, динамичный", "category": "Обувь", "slides": 5, "cover": "assets/works/02-7_sneakercards/cover.webp?v=9b986efa", "media": [{"type": "img", "src": "assets/works/02-7_sneakercards/1_slide_main.webp?v=c3d5963f", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/2_slide_sole.webp?v=e851945a", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/3_slide_mesh.webp?v=4b53824b", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/4_slide_run.webp?v=8abf25b9", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/02-7_sneakercards/5_slide_colors.webp?v=7d625764", "w": 900, "h": 1200}]}, {"id": "03-8_coffeecards", "cat": "market", "title": "Эспрессо-кофемашина", "text": "Тёмный премиальный стиль: «эспрессо как в кофейне», давление 15 бар, готовность за 30 секунд, капучинатор и комплектация с размерами.", "tags": ["техника", "5 слайдов", "премиум"], "brand": "Каффора", "style": "Тёмный премиум", "category": "Бытовая техника", "slides": 5, "cover": "assets/works/03-8_coffeecards/cover.webp?v=f06993ab", "media": [{"type": "img", "src": "assets/works/03-8_coffeecards/1_slide_main.webp?v=a8567295", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/2_slide_pressure.webp?v=744bf1ef", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/3_slide_milk.webp?v=e471ee0d", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/4_slide_morning.webp?v=6408a548", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/03-8_coffeecards/5_slide_size_kit.webp?v=2233c647", "w": 900, "h": 1200}]}, {"id": "04-9_perfumecards", "cat": "market", "title": "Парфюмерная вода «Ночной вельвет»", "text": "Вечерний люкс-стиль: пирамида аромата, стойкость 10 часов, флакон крупным планом и подарочная коробка с выбором объёма.", "tags": ["парфюм", "5 слайдов", "люкс"], "brand": "Вельвет", "style": "Вечерний люкс", "category": "Парфюмерия", "slides": 5, "cover": "assets/works/04-9_perfumecards/cover.webp?v=a73c8574", "media": [{"type": "img", "src": "assets/works/04-9_perfumecards/1_slide_main.webp?v=cc041b53", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/2_slide_notes.webp?v=025b9367", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/3_slide_bottle.webp?v=3bb32794", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/4_slide_evening.webp?v=b24b1e69", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/04-9_perfumecards/5_slide_gift.webp?v=6c0b2d7a", "w": 900, "h": 1200}]}, {"id": "05-10_robotvacuumcards", "cat": "market", "title": "Робот-пылесос с влажной уборкой", "text": "Светлый технологичный стиль: мощность всасывания, щётка против шерсти, карта уборки с запретными зонами и станция самоочистки.", "tags": ["техника", "5 слайдов", "схемы"], "brand": "Lumo", "style": "Светлый, технологичный", "category": "Бытовая техника", "slides": 5, "cover": "assets/works/05-10_robotvacuumcards/cover.webp?v=19691da6", "media": [{"type": "img", "src": "assets/works/05-10_robotvacuumcards/1_slide_main.webp?v=afd5341f", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/2_slide_power.webp?v=4c46f279", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/3_slide_map.webp?v=b777c0d4", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/4_slide_pets.webp?v=8430c639", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/05-10_robotvacuumcards/5_slide_station.webp?v=b6e24471", "w": 900, "h": 1200}]}, {"id": "06-2_serumcards", "cat": "market", "title": "Сыворотка для лица", "text": "Светлый премиальный стиль: главный слайд с выгодами, активные компоненты с процентами, как применять, результат через 4 недели и состав.", "tags": ["косметика", "5 слайдов", "минимализм"], "brand": "averlin", "style": "Светлый премиум", "category": "Косметика", "slides": 5, "cover": "assets/works/06-2_serumcards/cover.webp?v=ad9c6751", "media": [{"type": "img", "src": "assets/works/06-2_serumcards/1_slide_main.webp?v=40dc3b31", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/2_slide_actives.webp?v=60180c51", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/3_slide_howto.webp?v=e24f0b29", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/4_slide_result.webp?v=703015f0", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/06-2_serumcards/5_slide_volume.webp?v=a245c046", "w": 900, "h": 1200}]}, {"id": "07-11_smartwatchcards", "cat": "market", "title": "Спортивные смарт-часы", "text": "Кинематографичный стиль с оранжевым акцентом: «выше облаков» на главном, титан и сапфир крупным планом, защита 5 ATM в брызгах воды, спорт и GPS на руке и автономность 14 дней.", "tags": ["электроника", "5 слайдов", "синематика"], "brand": "Vektor", "style": "Кино-стиль, тёмный", "category": "Электроника", "slides": 5, "cover": "assets/works/07-11_smartwatchcards/cover.webp?v=1f78ca3b", "media": [{"type": "img", "src": "assets/works/07-11_smartwatchcards/1_slide_main.webp?v=043421da", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-11_smartwatchcards/2_slide_materials.webp?v=31aa2c18", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-11_smartwatchcards/3_slide_sport.webp?v=704dc206", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-11_smartwatchcards/4_slide_water.webp?v=4a716d22", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/07-11_smartwatchcards/5_slide_battery.webp?v=0a497e4f", "w": 900, "h": 1200}]}, {"id": "08-4_candlecards", "cat": "market", "title": "Ароматическая свеча", "text": "Тёплый эко-стиль: горящая свеча, пирамида аромата, натуральный состав, 40 часов горения и подарочная упаковка.", "tags": ["дом", "5 слайдов", "эко-стиль"], "brand": "Ольха", "style": "Тёплый эко", "category": "Товары для дома", "slides": 5, "cover": "assets/works/08-4_candlecards/cover.webp?v=75c0c9de", "media": [{"type": "img", "src": "assets/works/08-4_candlecards/1_slide_main.webp?v=28c19754", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/2_slide_aroma.webp?v=9f0e7bdd", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/3_slide_natural.webp?v=5a8feeaa", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/4_slide_burn_time.webp?v=87e8aeb8", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/08-4_candlecards/5_slide_size_gift.webp?v=600cd294", "w": 900, "h": 1200}]}, {"id": "09-12_rctruckcards", "cat": "market", "title": "Машинка на пульте управления", "text": "Детский экшен-стиль: машинка «летает по кочкам», скорость 30 км/ч, пульт, с которым разберётся первоклассник, езда по лужам и полный комплект в коробке.", "tags": ["детям", "5 слайдов", "экшен"], "brand": "Рыжик-Рэлли", "style": "Детский экшен", "category": "Детские товары", "slides": 5, "cover": "assets/works/09-12_rctruckcards/cover.webp?v=ef3171a1", "media": [{"type": "img", "src": "assets/works/09-12_rctruckcards/1_slide_main.webp?v=91beb355", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-12_rctruckcards/2_slide_speed.webp?v=0f706af2", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-12_rctruckcards/3_slide_puddle.webp?v=6c567532", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-12_rctruckcards/4_slide_remote.webp?v=5960f534", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/09-12_rctruckcards/5_slide_kit.webp?v=39d0bb64", "w": 900, "h": 1200}]}, {"id": "10-1_muginfographic", "cat": "market", "title": "Термокружка «Тропа 450»", "text": "Главный слайд с выгодами, схема слоёв стенки «держит тепло 12 часов», размеры с выносками и комплектация с цветами.", "tags": ["посуда", "4 слайда", "схемы"], "brand": "Полюс", "style": "Спокойный, схемы", "category": "Посуда", "slides": 4, "cover": "assets/works/10-1_muginfographic/cover.webp?v=8fad3fe0", "media": [{"type": "img", "src": "assets/works/10-1_muginfographic/1_slide_main.webp?v=306bb4d0", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/2_slide_heat.webp?v=0f13ffad", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/3_slide_size.webp?v=a0b17d25", "w": 900, "h": 1200}, {"type": "img", "src": "assets/works/10-1_muginfographic/4_slide_colors.webp?v=ef48d8a1", "w": 900, "h": 1200}]}];
-const PRICE = 200;
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
 const plural = (n, a, b, c) => { const m10 = n % 10, m100 = n % 100; return m10 === 1 && m100 !== 11 ? a : (m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20) ? b : c); };
 const imgs = w => w.media.filter(m => m.type === "img");
-const rub = n => n.toLocaleString("ru-RU") + " ₽";
 
 // первый экран: веер из главных слайдов
 document.getElementById("stack").innerHTML = WORKS.slice(0, 3)
@@ -426,7 +356,6 @@ function card(w) {
       <img src="${(sl[0] || {src: w.cover}).src}" alt="${esc(w.title)}" loading="lazy">
       <div class="segs">${sl.map((_, k) => `<i class="${k ? "" : "on"}"></i>`).join("")}</div>
     </div>
-    <div class="pprice"><b>${PRICE} ₽</b><span>/ слайд</span></div>
     <div class="pname"><strong>${esc(w.brand)}</strong> / ${esc(w.title)}</div>
     <div class="pmeta">${esc(w.category)} · ${esc(w.style)}</div>
     <span class="pgap"></span><span class="pbtn">Смотреть слайды</span>
@@ -496,7 +425,6 @@ function openWork(i, fromHistory) {
   ].map(([k, v]) => `<div><dt>${k}</dt><span class="dots"></span><dd>${esc(v)}</dd></div>`).join("");
   document.getElementById("v-text").textContent = cw.text;
   document.getElementById("v-tags").innerHTML = cw.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("");
-  document.getElementById("v-calc").innerHTML = `Такая карточка из ${cw.slides} ${plural(cw.slides, "слайда", "слайдов", "слайдов")} — <b>${rub(cw.slides * PRICE)}</b>`;
   document.getElementById("v-more").innerHTML = WORKS.filter(w => w !== cw).slice(0, 6).map(card).join("");
   bindScrub(document.getElementById("v-more"));
   showSlide(0);
